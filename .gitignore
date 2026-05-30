@@ -136,3 +136,10 @@ translations/*.qm
 .env
 .env.*
 .local/
+
+# ---- BeSqlitEd native build --------------------------------------------------
+# The project Makefile is hand-written source, not a generated qmake artifact.
+!Makefile
+
+# Local Haiku build output
+/BeSqlitEd
