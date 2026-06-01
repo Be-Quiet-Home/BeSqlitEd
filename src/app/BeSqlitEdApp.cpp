@@ -9,8 +9,15 @@ BeSqlitEdApp::BeSqlitEdApp(int argc, char** argv)
 	BApplication(kApplicationSignature),
 	fMainWindow(NULL)
 {
-	if (argc > 1 && argv[1] != NULL)
+	if (argc > 1 && argv[1] != NULL) {
 		fInitialDatabasePath = argv[1];
+		return;
+	}
+
+	if (fSettings.Load() == B_OK
+			&& fSettings.LastDatabasePath()[0] != '\0') {
+		fInitialDatabasePath = fSettings.LastDatabasePath();
+	}
 }
 
 void

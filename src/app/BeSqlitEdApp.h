@@ -1,6 +1,8 @@
 #ifndef BESQLITED_APP_H
 #define BESQLITED_APP_H
 
+#include "AppSettings.h"
+
 #include <Application.h>
 #include <String.h>
 
@@ -15,6 +17,7 @@ public:
 private:
 	MainWindow* fMainWindow;
 	BString fInitialDatabasePath;
+	AppSettings fSettings;
 };
 
 #endif
