@@ -6,7 +6,7 @@ CXXFLAGS ?= -std=c++11 -Wall -Wextra -pedantic \
 	-Isrc/core \
 	-Isrc/ui
 
-LIBS := -lbe -lsqlite3
+LIBS := -lbe -ltracker -lsqlite3
 
 SOURCES := \
 	src/app/BeSqlitEdApp.cpp \
