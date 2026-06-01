@@ -1,5 +1,7 @@
 #include "MainWindow.h"
 
+#include "AppSettings.h"
+
 #include "Database.h"
 #include "SchemaReader.h"
 
@@ -157,6 +159,11 @@ MainWindow::LoadDatabase(const char* path)
 	message << static_cast<int32>(tables.size());
 	message << " table(s)";
 	fStatusView->SetText(message.String());
+
+	AppSettings settings;
+	settings.Load();
+	settings.SetLastDatabasePath(database.Path());
+	settings.Save();
 
 	for (std::vector<std::string>::const_iterator it = tables.begin();
 			it != tables.end(); ++it) {
