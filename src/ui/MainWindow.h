@@ -3,11 +3,20 @@
 
 #include <Window.h>
 
+class BListView;
+class BStringView;
+
 class MainWindow : public BWindow {
 public:
-	MainWindow();
+	explicit MainWindow(const char* databasePath);
 
 	bool QuitRequested() override;
+
+private:
+	void LoadDatabase(const char* path);
+
+	BStringView* fStatusView;
+	BListView* fTableListView;
 };
 
 #endif
