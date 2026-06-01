@@ -4,24 +4,30 @@
 
 static const char* kApplicationSignature = "application/x-vnd.BeQuietHome-BeSqlitEd";
 
-BeSqlitEdApp::BeSqlitEdApp()
+BeSqlitEdApp::BeSqlitEdApp(int argc, char** argv)
 	:
 	BApplication(kApplicationSignature),
 	fMainWindow(NULL)
 {
+	if (argc > 1 && argv[1] != NULL)
+		fInitialDatabasePath = argv[1];
 }
 
 void
 BeSqlitEdApp::ReadyToRun()
 {
-	fMainWindow = new MainWindow();
+	const char* path = fInitialDatabasePath.Length() > 0
+		? fInitialDatabasePath.String()
+		: NULL;
+
+	fMainWindow = new MainWindow(path);
 	fMainWindow->Show();
 }
 
 int
-main()
+main(int argc, char** argv)
 {
-	BeSqlitEdApp app;
+	BeSqlitEdApp app(argc, argv);
 	app.Run();
 	return 0;
 }
